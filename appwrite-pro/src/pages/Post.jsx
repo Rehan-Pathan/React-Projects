@@ -36,11 +36,11 @@ export default function Post() {
         <div className="py-8">
             <Container>
                 {/* Image Section */}
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-full flex justify-center mb-4 relative border rounded-xl overflow-hidden">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full h-auto object-cover max-h-96 sm:max-h-80 md:max-h-72"
+                        className="rounded-xl w-full h-auto object-cover object-center max-h-96 sm:max-h-80 md:max-h-72"
                     />
                     {isAuthor && (
                         <div className="absolute top-4 right-4 flex space-x-2">
