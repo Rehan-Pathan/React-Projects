@@ -40,17 +40,16 @@ export default function Post() {
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full h-auto object-contain max-h-[500px] sm:max-h-[300px] md:max-h-[400px]"
+                        className="rounded-xl w-full h-auto object-contain max-h-[500px]"
                     />
-
                     {isAuthor && (
-                        <div className="absolute top-4 right-4 flex flex-col space-y-2 z-20 bg-black bg-opacity-50 p-3 rounded-md">
+                        <div className="absolute top-4 right-4 flex space-x-2">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="px-4 py-2 text-white shadow-md hover:bg-green-600">
+                                <Button bgColor="bg-green-500" className="px-4 py-2 text-white">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost} className="px-4 py-2 text-white shadow-md hover:bg-red-600">
+                            <Button bgColor="bg-red-500" onClick={deletePost} className="px-4 py-2 text-white">
                                 Delete
                             </Button>
                         </div>
