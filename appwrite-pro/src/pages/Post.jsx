@@ -44,7 +44,7 @@ export default function Post() {
                     />
 
                     {isAuthor && (
-                        <div className="absolute top-4 right-4 flex flex-col space-y-2 z-10">
+                        <div className="absolute top-4 right-4 flex flex-col space-y-2 z-20 bg-black bg-opacity-50 p-3 rounded-md">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button bgColor="bg-green-500" className="px-4 py-2 text-white shadow-md hover:bg-green-600">
                                     Edit
