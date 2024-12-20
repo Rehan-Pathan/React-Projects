@@ -40,7 +40,7 @@ export default function Post() {
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full h-auto object-cover object-center max-h-96 sm:max-h-80 md:max-h-72"
+                        className="rounded-xl w-full h-auto object-contain max-h-[500px]"
                     />
                     {isAuthor && (
                         <div className="absolute top-4 right-4 flex space-x-2">
