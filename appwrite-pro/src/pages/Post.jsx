@@ -36,25 +36,27 @@ export default function Post() {
         <div className="py-8">
             <Container>
                 {/* Image Section */}
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl overflow-hidden">
+                <div className="w-full flex justify-center mb-4 border rounded-xl overflow-hidden">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full h-auto object-contain max-h-[500px]"
+                        className="rounded-xl w-full h-auto object-contain max-h-[500px] sm:max-h-[300px] md:max-h-[400px]"
                     />
-                    {isAuthor && (
-                        <div className="absolute top-4 right-4 flex space-x-2">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="px-4 py-2 text-white">
-                                    Edit
-                                </Button>
-                            </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost} className="px-4 py-2 text-white">
-                                Delete
-                            </Button>
-                        </div>
-                    )}
                 </div>
+
+                {/* Buttons Section */}
+                {isAuthor && (
+                    <div className="flex space-x-4 mb-6 justify-center">
+                        <Link to={`/edit-post/${post.$id}`}>
+                            <Button bgColor="bg-green-500" className="px-4 py-2 text-white shadow-md hover:bg-green-600">
+                                Edit
+                            </Button>
+                        </Link>
+                        <Button bgColor="bg-red-500" onClick={deletePost} className="px-4 py-2 text-white shadow-md hover:bg-red-600">
+                            Delete
+                        </Button>
+                    </div>
+                )}
 
                 {/* Post Title */}
                 <div className="w-full mb-6">
