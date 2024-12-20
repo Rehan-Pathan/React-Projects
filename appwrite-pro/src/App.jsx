@@ -1,8 +1,8 @@
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import './App.css'
 import authService from "./appwrite/auth"
-import {login, logout} from "./store/authSlice"
+import { login, logout } from "./store/authSlice"
 import { Footer, Header } from './components'
 import { Outlet } from 'react-router-dom'
 
@@ -12,25 +12,28 @@ function App() {
 
   useEffect(() => {
     authService.getCurrentUser()
-    .then((userData) => {
-      if (userData) {
-        dispatch(login({userData}))
-      } else {
-        dispatch(logout())
-      }
-    })
-    .finally(() => setLoading(false))
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }))
+        } else {
+          dispatch(logout())
+        }
+      })
+      .finally(() => setLoading(false))
   }, [dispatch])
-  
+
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-white'>
-      <div className='w-full block'>
-        <Header />
-        <main>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Header Section */}
+      <Header />
+
+      {/* Main Content Section */}
+      <main className="flex-grow px-4 py-6 sm:px-6 md:px-8 lg:px-16">
         <Outlet />
-        </main>
-        <Footer />
-      </div>
+      </main>
+
+      {/* Footer Section */}
+      <Footer />
     </div>
   ) : null
 }
