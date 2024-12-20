@@ -42,14 +42,15 @@ export default function Post() {
                         alt={post.title}
                         className="rounded-xl w-full h-auto object-contain max-h-[500px] sm:max-h-[300px] md:max-h-[400px]"
                     />
+
                     {isAuthor && (
-                        <div className="absolute top-4 right-4 flex space-x-2">
+                        <div className="absolute top-4 right-4 flex flex-col space-y-2 z-10">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="px-4 py-2 text-white">
+                                <Button bgColor="bg-green-500" className="px-4 py-2 text-white shadow-md hover:bg-green-600">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost} className="px-4 py-2 text-white">
+                            <Button bgColor="bg-red-500" onClick={deletePost} className="px-4 py-2 text-white shadow-md hover:bg-red-600">
                                 Delete
                             </Button>
                         </div>
