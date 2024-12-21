@@ -1,33 +1,36 @@
 /* eslint-disable react/prop-types */
-import {useEffect, useState} from 'react'
-import {useSelector} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-export default function Protected({children, authentication = true}) {
-
-    const navigate = useNavigate()
-    const [loader, setLoader] = useState(true)
-    const authStatus = useSelector(state => state.auth.status)
+export default function Protected({ children, authentication = true }) {
+    const navigate = useNavigate();
+    const [loader, setLoader] = useState(true);
+    const authStatus = useSelector((state) => state.auth.status);
 
     useEffect(() => {
-        //TODO: make it more easy to understand
+        /**
+         * Redirects users based on their authentication status:
+         * - If `authentication` is true and `authStatus` is false, redirect to login.
+         * - If `authentication` is false and `authStatus` is true, redirect to home.
+         */
+        const handleRedirect = () => {
+            if (authentication && !authStatus) {
+                navigate("/login");
+            } else if (!authentication && authStatus) {
+                navigate("/");
+            }
+            setLoader(false);
+        };
 
-        // if (authStatus ===true){
-        //     navigate("/")
-        // } else if (authStatus === false) {
-        //     navigate("/login")
-        // }
-        
-        //let authValue = authStatus === true ? true : false
+        handleRedirect();
+    }, [authStatus, navigate, authentication]);
 
-        if(authentication && authStatus !== authentication){
-            navigate("/login")
-        } else if(!authentication && authStatus !== authentication){
-            navigate("/")
-        }
-        setLoader(false)
-    }, [authStatus, navigate, authentication])
-
-  return loader ? <h1>Loading...</h1> : <>{children}</>
+    return loader ? (
+        <div className="flex items-center justify-center h-screen">
+            <div className="loader" aria-label="Loading..."></div>
+        </div>
+    ) : (
+        <>{children}</>
+    );
 }
-

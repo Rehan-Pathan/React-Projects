@@ -1,16 +1,22 @@
 /* eslint-disable react/prop-types */
-import logoImage from '../assets/logo.jpg';  // Adjust the relative path if necessary
+import logoImage from '../assets/logo.jpg'; // Adjust the path if necessary
 
-function Logo({ width = '100px' }) {
+function Logo({ width = '100px', className = '', altText = 'Logo' }) {
   return (
-    <div>
+    <div className={`logo-container ${className}`}>
       <img 
-        src={logoImage}  // Replace with the actual path to your image
-        alt="Logo"
-        style={{ width: width }}  // You can dynamically adjust the width of the logo using props
+        src={logoImage} 
+        alt={altText} 
+        style={{ width }} 
+        onError={(e) => {
+          e.target.onerror = null; // Prevent infinite loop
+          e.target.src = 'https://via.placeholder.com/100'; // Placeholder image as fallback
+        }}
+        className="rounded-lg" // Adds a bit of style to the logo
       />
     </div>
   );
 }
 
 export default Logo;
+
