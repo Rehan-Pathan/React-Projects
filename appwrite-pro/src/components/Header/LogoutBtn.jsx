@@ -16,7 +16,7 @@ function LogoutBtn() {
 
     return (
         <button
-            className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full text-sm font-medium text-blue-600 border border-blue-600 hover:text-blue-800 focus:ring-2 focus:ring-blue-200 focus:outline-none"
+            className="inline-block px-6 py-2 duration-200 hover:bg-gray-100 rounded-full text-sm font-medium text-black border border-black hover:text-gray-800 focus:ring-2 focus:ring-gray-200 focus:outline-none"
             onClick={logoutHandler}
             aria-label="Logout"
         >
